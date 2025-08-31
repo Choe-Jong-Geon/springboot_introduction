@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'me.shinsunyoung'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Lombok 관련 설정
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // H2 데이터베이스
+    runtimeOnly 'com.h2database:h2'
+
+    // 테스트 관련 종속성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //스프링 시큐리티를 사용하기 위한 스타터
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //타임리프에서 시큐링 시큐리티를 사용하기 위한 의존성 추가
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    //스프링 시큐리티를 테스트하기 위한 의존성 추가
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    //롬복 테스트
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'//자바 JWT 라이브러리
+    implementation 'javax.xml.bind:jaxb-api:2.3.1' //XML 문서와 Java 객체 간 매핑 자동화
+}
+
+test {
+    useJUnitPlatform()
+}
+
